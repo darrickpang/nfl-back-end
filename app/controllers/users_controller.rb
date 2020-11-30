@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authorized, only: [:persist]
     def new
         user = User.new
     end
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
         else 
             render json: {error: 'Incorrect user or Password'}
         end
+        
     end
 
     def persist
